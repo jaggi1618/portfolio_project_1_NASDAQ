@@ -56,7 +56,7 @@ future = model_fo.make_future_dataframe(periods=1000)
 future = future.merge(data[['ds', 'volume', 'vix', 'interest_rate', 'cpi']], on='ds', how='left')
 future.ffill(inplace=True)  
 
-X_train = future[['volume', 'vix', 'interest_rate', 'cpi']]
+X_train = future[['volume', 'vix', 'interest_rate', 'cpi']].values
 # Prophet Model Prediction
 if st.button("Predict-Using tuned prophet model"):
     forecast = model_fo.predict(future)
@@ -80,7 +80,7 @@ if st.button("Predict-Using tuned hybrid model"):
         forecast = st.session_state.forecast  
 
         # Ensure we have external regressor values for prediction
-        X_train = future[['volume', 'vix', 'interest_rate', 'cpi']]
+        X_train = future[['volume', 'vix', 'interest_rate', 'cpi']].values
 
         # Hybrid model correction
         forecast["lgb_correction"] = model_lgbm.predict(X_train)
