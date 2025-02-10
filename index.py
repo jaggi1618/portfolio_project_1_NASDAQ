@@ -56,6 +56,7 @@ future = model_fo.make_future_dataframe(periods=1000)
 future = future.merge(data[['ds', 'volume', 'vix', 'interest_rate', 'cpi']], on='ds', how='left')
 future.ffill(inplace=True)  
 
+X_train = future[['volume', 'vix', 'interest_rate', 'cpi']]
 # Prophet Model Prediction
 if st.button("Predict-Using tuned prophet model"):
     forecast = model_fo.predict(future)
