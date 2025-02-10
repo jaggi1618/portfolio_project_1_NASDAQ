@@ -1,0 +1,7 @@
+prophet==1.1.6
+plotly==6.0.0
+pandas==2.2.3
+streamlit
+pickle-mixin
+joblib
+lightgbm==4.2.0
