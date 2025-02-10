@@ -15,8 +15,7 @@ data['ds'] = pd.to_datetime(data['ds'])
 with open('forecast_model.pkl','rb') as file:
     model_fo = pickle.load(file)
 
-with open('lgb_model.joblib','rb') as file_1:
-    model_lgbm = joblib.load(file_1)    
+model_lgbm = joblib.load("lgb_model.joblib")   
 
 st.title("NASDAQ-100 (INDEXNASDAQ : NDX) ")
 st.subheader("forecasting using Hybrid Model: Prophet + LGBM 🎯 ")
